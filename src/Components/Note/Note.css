@@ -1,0 +1,10 @@
+.Notes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.container {
+  width: 400px;
+}

@@ -8,7 +8,7 @@ import './Note.css';
 
 const initialFormState = { name: '', description: '' }
 
-function Note () {
+const Note = () => {
   const [notes, setNotes] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
@@ -36,7 +36,6 @@ function Note () {
 
   return (
     <div className="Notes">
-      <h1>My Notes</h1>
       <AddNote
         name={formData.name}
         description={formData.description}

@@ -8,3 +8,21 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.NavMenu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px #f0f1f2;
+  margin-bottom: 20px;
+}
+
+.NavMenu header {
+  display: flex;
+  align-items: center;
+}
+
+.NavMenu h1 {
+  margin: 0;
+}

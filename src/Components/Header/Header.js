@@ -1,12 +1,49 @@
-import logo from '../../logo.svg';
 import './Header.css';
+import { LogoutOutlined, LoginOutlined } from '@ant-design/icons';
+import { Auth } from 'aws-amplify';
+import { Menu } from 'antd';
 
-function Header () {
+const Header = props => {
+  const handleClick = e => {
+    switch (e.key) {
+      case 'logout':
+        signOut();
+        break;
+      case 'signIn':
+        props.onNavigation('signIn');
+        break;
+      default:
+        break;
+    }
+  };
+
+  async function signOut() {
+    try {
+      await Auth.signOut();
+      props.onSignOut();
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
+
   return (
-    <header>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>We now have Auth!</h1>
-    </header>
+    <nav className="NavMenu">
+      <header>
+        <h1>{props.title}</h1>
+      </header>
+      <Menu onClick={handleClick}>
+        {
+          props.user
+          ? <Menu.Item key="logout" icon={<LogoutOutlined />}>
+              Logout
+            </Menu.Item>
+          :  <Menu.Item key="signIn" icon={<LoginOutlined />}>
+              Sign In
+            </Menu.Item>
+        }
+        
+      </Menu>
+    </nav>
   );
 }
 
